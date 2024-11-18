@@ -1,0 +1,56 @@
+:root {
+  --primery-color: rgb(50, 130, 190);
+  --secondry-color: rgba(93, 206, 255, 0.5);
+}
+.headerDiv {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 290px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 10px;
+}
+.button {
+  /* background-color: rgb(50, 130, 190); */
+  background-color: var(--secondry-color);
+  padding: 6px;
+  padding-right: 10px;
+  padding-left: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.buttonText {
+  color: white;
+  font-weight: normal;
+}
+.headerOptionDiv {
+  display: flex;
+  flex-direction: row;
+  direction: rtl;
+  width: 80%;
+  padding-right: 6%;
+  /* background-color: aqua; */
+}
+.headerOptionText {
+  color: black;
+  padding: 10px;
+  font-weight: normal;
+}
+.headerOptionDiv .headerOption {
+  margin: 0;
+  cursor: pointer;
+  /* background-color: blanchedalmond; */
+  align-content: flex-end;
+  margin: 6px;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+/* .done-btn {
+  background-color: green;
+  color: #fff;
+} */

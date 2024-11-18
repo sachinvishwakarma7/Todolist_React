@@ -1,0 +1,18 @@
+.divStyle{
+    background-color: "gray";
+    height: "300px";
+    width: "100%";
+    flex-direction:'row';
+    display:'flex';
+    justify-content:'space-around';
+  }
+  
+  .childDiv {
+    background-color : "red";
+    height: "150px";
+    width: "50%";
+  }
+  
+  #parentDiv {
+    background-color: 'gray';
+  }
