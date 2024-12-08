@@ -9,7 +9,7 @@
   transition: width 0.2s, ease-in-out 0.2s;
 }
 
-.icon-container {
+.sidebar-icon-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -55,4 +55,17 @@
   .button-container {
     display: block;
   }
+}
+.logout-wrapper {
+  display: flex;
+  height: calc(100% - 260px);
+  flex-direction: column-reverse;
+}
+.logout-container {
+  cursor: pointer;
+  align-self: "flex-end";
+}
+.logout-button-container {
+  border: 0;
+  background-color: white;
 }

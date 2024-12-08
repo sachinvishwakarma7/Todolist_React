@@ -18,3 +18,10 @@ code {
   --primery-color: #fff;
   --secondry-color: rgb(80, 160, 190);
 }
+
+.input {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+}

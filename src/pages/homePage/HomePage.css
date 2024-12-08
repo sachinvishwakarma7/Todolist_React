@@ -1,0 +1,13 @@
+.home-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 290px;
+  transition: padding-left 0.1s ease-in-out 0.1s;
+}
+
+@media screen and (max-width: 1024px) {
+  .home-container {
+    padding-left: 80px;
+  }
+}

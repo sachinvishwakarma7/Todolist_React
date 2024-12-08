@@ -1,12 +1,55 @@
-import React, { useEffect } from "react";
-import { fetchTodosThunk } from "../../redux/thunk/TodoThunk";
-import { useDispatch } from "react-redux";
+import React, { useState } from "react";
+import "./HomePage.css";
 
 const HomePage = () => {
-  const dispatch = useDispatch();
+  const [pageData, setPageData] = useState("");
 
-  
-  return <div>HomePage</div>;
+  const onDragStart = (e) => {
+    e.dataTransfer.setData("text", "hello i am sachin");
+  };
+
+  const onDrop = (e) => {
+    e.preventDefault();
+    setPageData(e.dataTransfer.getData("text"));
+  };
+
+  const onDragOver = (e) => {
+    e.preventDefault();
+  };
+
+  // useEffect(()=>{
+  //   localStorage.removeItem('authToken')
+  // },[])
+
+  return (
+    <div className="home-container">
+      <div
+        draggable={true}
+        onDragStart={onDragStart}
+        style={{
+          height: "200px",
+          width: "200px",
+          margin: "20px",
+          backgroundColor: "whitesmoke",
+        }}
+      >
+        <span>setData</span>
+      </div>
+
+      <div
+        onDrop={onDrop}
+        onDragOver={onDragOver}
+        style={{
+          height: "200px",
+          margin: "20px",
+          width: "200px",
+          backgroundColor: "whitesmoke",
+        }}
+      >
+        <span>{pageData}</span>
+      </div>
+    </div>
+  );
 };
 
 export default HomePage;

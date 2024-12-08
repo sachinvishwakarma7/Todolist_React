@@ -3,8 +3,6 @@ import "./TodoListPage.css";
 import { useDispatch, useSelector } from "react-redux";
 import Modal from "../../components/model/Modal";
 import { notifyError } from "../../utils/toast";
-// import { IoIosSearch } from "react-icons/io";
-import { SlMagnifier } from "react-icons/sl";
 import { FiEdit, FiXOctagon } from "react-icons/fi";
 
 import AppButton from "../../components/button/AppButton";
@@ -15,6 +13,7 @@ import {
   deleteTodoThunk,
   searchTodoThunk,
 } from "../../redux/thunk/TodoThunk";
+import AppInput from "../../components/input/AppInput";
 
 const TodoListPage = () => {
   const { data, error, isloading } = useSelector((state) => state.todoReducer);
@@ -81,7 +80,7 @@ const TodoListPage = () => {
       <div className="table-container">
         <h2 className="table-header">Todo List</h2>
         <div className="add-container">
-          <div className="search-input-container">
+          {/* <div className="search-input-container">
             <input
               type="text"
               className="search-input"
@@ -95,7 +94,14 @@ const TodoListPage = () => {
             <div className="search-icon-container">
               <SlMagnifier color="#0d6efd" />
             </div>
-          </div>
+          </div> */}
+          <AppInput
+            value={searchcInput}
+            onChange={(event) => {
+              setSearchcInput(event.target.value);
+              searchInputTodo(event.target.value);
+            }}
+          />
           <AppButton
             label="Add Todo"
             className={"done-btn"}
