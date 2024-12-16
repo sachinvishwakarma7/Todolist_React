@@ -24,6 +24,37 @@
   background-color: whitesmoke;
 }
 
+.logo-image {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  margin-right: 6px;
+}
+
+.logo-container {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  /* background-color: blue; */
+}
+
+.logo-div {
+  border-radius: 40px;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  align-items: center;
+  /* margin-right: 10px; */
+  height: 50px;
+  width: 50px;
+}
+
+.name-container {
+  display: flex;
+  flex-direction: column;
+}
+
 .button-container.active {
   background-color: whitesmoke;
 }
@@ -55,10 +86,13 @@
   .button-container {
     display: block;
   }
+  .name-container {
+    display: none;
+  }
 }
 .logout-wrapper {
   display: flex;
-  height: calc(100% - 260px);
+  height: calc(100% - 360px);
   flex-direction: column-reverse;
 }
 .logout-container {

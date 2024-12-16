@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.7.7",
     "bootstrap": "^5.3.0",
+    "date-fns": "^4.1.0",
     "jquery": "^3.7.0",
     "popper.js": "^1.16.1",
     "react": "^18.2.0",
@@ -20,6 +21,7 @@
     "react-scripts": "5.0.1",
     "react-toastify": "^10.0.6",
     "redux-persist": "^6.0.0",
+    "socket.io-client": "^4.8.1",
     "testproject": "file:",
     "web-vitals": "^2.1.4"
   },

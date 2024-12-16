@@ -3,7 +3,6 @@ import "./TodoListPage.css";
 import { useDispatch, useSelector } from "react-redux";
 import Modal from "../../components/model/Modal";
 import { notifyError } from "../../utils/toast";
-import { FiEdit, FiXOctagon } from "react-icons/fi";
 
 import AppButton from "../../components/button/AppButton";
 import {
@@ -14,6 +13,7 @@ import {
   searchTodoThunk,
 } from "../../redux/thunk/TodoThunk";
 import AppInput from "../../components/input/AppInput";
+import { SlMagnifier } from "react-icons/sl";
 
 const TodoListPage = () => {
   const { data, error, isloading } = useSelector((state) => state.todoReducer);
@@ -73,29 +73,24 @@ const TodoListPage = () => {
 
   useEffect(() => {
     dispatch(fetchTodosThunk());
-  }, []);
+  }, [dispatch]);
 
   return (
-    <div className="about-container">
-      <div className="table-container">
-        <h2 className="table-header">Todo List</h2>
+    <>
+      <div className="about-container">
+        <div
+          style={{ paddingLeft: "10px", paddingBottom: 0, marginBottom: 0 }}
+          className="name-home-container"
+        >
+          <h1>Todo List</h1>
+          <p>Organize your list by priority.</p>
+        </div>
         <div className="add-container">
-          {/* <div className="search-input-container">
-            <input
-              type="text"
-              className="search-input"
-              placeholder="Search"
-              value={searchcInput}
-              onChange={(event) => {
-                setSearchcInput(event.target.value);
-                searchInputTodo(event.target.value);
-              }}
-            />
-            <div className="search-icon-container">
-              <SlMagnifier color="#0d6efd" />
-            </div>
-          </div> */}
           <AppInput
+            type="text"
+            name={"search-todo"}
+            isIcon={true}
+            Icon={<SlMagnifier color="#0d6efd" />}
             value={searchcInput}
             onChange={(event) => {
               setSearchcInput(event.target.value);
@@ -103,88 +98,77 @@ const TodoListPage = () => {
             }}
           />
           <AppButton
-            label="Add Todo"
+            label="Add_Todo"
             className={"done-btn"}
             onClick={() => setAddNewTodoModal(true)}
           />
         </div>
-        {data !== undefined && data.length !== 0 ? (
-          <div className="table">
-            <div className="table-row header">
-              <div className="table-cell">Title</div>
-              <div className="table-cell">Description</div>
-              <div className="table-cell">Category</div>
-              <div className="table-cell">Priority</div>
-              <div className="table-cell">Completed</div>
-              <div className="table-cell">Actions</div>
-            </div>
-            {data?.map((ele) => (
-              <div key={ele?._id} className="table-row">
-                <div
-                  className={`table-cell ${
-                    ele?.completed && `text-decoration`
-                  }`}
-                >
-                  {ele?.title}
-                </div>
-                <div className="table-cell">{ele?.description}</div>
-                <div className="table-cell">{ele?.category}</div>
-                <div className="table-cell">
-                  <span
-                    style={{
-                      backgroundColor:
-                        ele?.priority === "high"
-                          ? "#dc3545"
-                          : ele?.priority === "medium"
-                          ? "#0d6efd"
-                          : "#198754",
-                      borderRadius: "4px",
-                      color: "white",
-                    }}
+        <div className="todo-container">
+          {data !== undefined && data.length !== 0 ? (
+            data?.map((ele, index) => (
+              <div key={index} className="todo-card">
+                <div className="todo-header">
+                  <div className="todo-title"> {ele?.title}</div>
+                  <div
+                    className={`todo-priority ${
+                      ele?.priority === "high"
+                        ? "priority-high"
+                        : ele?.priority === "medium"
+                        ? "priority-medium"
+                        : "priority-low"
+                    }`}
                   >
                     {ele?.priority}
+                  </div>
+                </div>
+                <div className="todo-description">{ele?.description}</div>
+                <div className="todo-category">Category: {ele?.category}</div>
+                <div className="todo-status">
+                  <span className="status-label">
+                    Completed:{" "}
+                    <span
+                      style={{
+                        color: ele?.completed ? "#198754" : "#dc3545",
+                        backgroundColor: "#f9f9f9",
+                      }}
+                    >
+                      {" "}
+                      {ele?.completed ? "Yes" : "No"}
+                    </span>
                   </span>
                 </div>
-                <div className="table-cell">
-                  <span
-                    style={{
-                      color: ele?.completed ? "#198754" : "#dc3545",
-                      backgroundColor: "#f9f9f9",
-                    }}
-                  >
-                    {ele?.completed ? "Yes" : "No"}
-                  </span>
-                </div>
-                <div className="table-cell">
-                  <button
-                    className="action-btn"
+                <div className="todo-actions">
+                  <AppButton
+                    className="edit-btn"
+                    name="edit-btn"
                     title="Edit"
+                    label="Edit"
                     onClick={() => openEditModal(ele)}
-                  >
-                    <FiEdit color="#198754" />
-                  </button>
-                  <button
-                    className="action-btn"
-                    title="Delete"
+                  />
+                  <AppButton
+                    className="delete-btn"
+                    name="delete-btn"
+                    title="delete-btn"
+                    label="Delete"
                     onClick={() => openDeleteModal(ele)}
-                  >
-                    <FiXOctagon color="#dc3545" />
-                  </button>
+                  />
                 </div>
               </div>
-            ))}
-          </div>
-        ) : (
-          <span>No Todos...........</span>
-        )}
+            ))
+          ) : (
+            <span>No Todos...........</span>
+          )}
+        </div>
       </div>
 
-      {/*add new todo model */}
-
-      <Modal isOpen={addNewTodoModal} onClose={() => setAddNewTodoModal(false)}>
-        <h3>Add New Todo</h3>
-        <form>
-          <label htmlFor="title">Title:</label>
+      <div className="about-container">
+        {/*add new todo model */}
+        <Modal
+          isOpen={addNewTodoModal}
+          onClose={() => setAddNewTodoModal(false)}
+        >
+          <h3>Add New Todo</h3>
+          <span htmlFor="title">Title:</span>
           <input
             type="text"
             id="title"
@@ -194,7 +178,7 @@ const TodoListPage = () => {
             className="modal-input"
           />
 
-          <label htmlFor="description">Description:</label>
+          <span htmlFor="description">Description:</span>
           <input
             type="text"
             id="description"
@@ -204,7 +188,7 @@ const TodoListPage = () => {
             className="modal-input"
           />
 
-          <label htmlFor="category">Category:</label>
+          <span htmlFor="category">Category:</span>
           <input
             type="text"
             id="category"
@@ -214,7 +198,7 @@ const TodoListPage = () => {
             className="modal-input"
           />
 
-          <label htmlFor="priority">Priority:</label>
+          <span htmlFor="priority">Priority:</span>
           <select
             id="priority"
             name="priority"
@@ -227,7 +211,7 @@ const TodoListPage = () => {
             <option value="high">High</option>
           </select>
 
-          <label htmlFor="completed">Completed:</label>
+          <span htmlFor="completed">Completed:</span>
           <select
             id="completed"
             name="completed"
@@ -266,15 +250,13 @@ const TodoListPage = () => {
               onClick={() => setAddNewTodoModal(false)}
             />
           </div>
-        </form>
-      </Modal>
+        </Modal>
 
-      {/*edit model */}
+        {/*edit model */}
 
-      <Modal isOpen={editShowModal} onClose={() => setEditShowModal(false)}>
-        <h3>Edit Todo</h3>
-        <form>
-          <label htmlFor="title">Title:</label>
+        <Modal isOpen={editShowModal} onClose={() => setEditShowModal(false)}>
+          <h3>Edit Todo</h3>
+          <span>Title:</span>
           <input
             type="text"
             id="title"
@@ -284,7 +266,7 @@ const TodoListPage = () => {
             className="modal-input"
           />
 
-          <label htmlFor="description">Description:</label>
+          <span>Description:</span>
           <input
             type="text"
             id="description"
@@ -294,7 +276,7 @@ const TodoListPage = () => {
             className="modal-input"
           />
 
-          <label htmlFor="category">Category:</label>
+          <span>Category:</span>
           <input
             type="text"
             id="category"
@@ -304,7 +286,7 @@ const TodoListPage = () => {
             className="modal-input"
           />
 
-          <label htmlFor="priority">Priority:</label>
+          <span>Priority:</span>
           <select
             id="priority"
             name="priority"
@@ -317,7 +299,7 @@ const TodoListPage = () => {
             <option value="high">High</option>
           </select>
 
-          <label htmlFor="completed">Completed:</label>
+          <span>Completed:</span>
           <select
             id="completed"
             name="completed"
@@ -344,32 +326,35 @@ const TodoListPage = () => {
               onClick={() => setEditShowModal(false)}
             />
           </div>
-        </form>
-      </Modal>
+        </Modal>
 
-      {/*delete model */}
+        {/*delete model */}
 
-      <Modal isOpen={deleteShowModal} onClose={() => setDeleteShowModal(false)}>
-        <p>Are you want to delete this todo?</p>
-        <div>
-          <div className="modal-buttons">
-            <AppButton
-              label="Done"
-              className={"done-btn"}
-              onClick={() => {
-                dispatch(deleteTodoThunk(deleteId));
-                setDeleteShowModal(false);
-              }}
-            />
-            <AppButton
-              label="Cancel"
-              className="cancel-btn"
-              onClick={() => setDeleteShowModal(false)}
-            />
+        <Modal
+          isOpen={deleteShowModal}
+          onClose={() => setDeleteShowModal(false)}
+        >
+          <p>Are you want to delete this todo?</p>
+          <div>
+            <div className="modal-buttons">
+              <AppButton
+                label="Done"
+                className={"done-btn"}
+                onClick={() => {
+                  dispatch(deleteTodoThunk(deleteId));
+                  setDeleteShowModal(false);
+                }}
+              />
+              <AppButton
+                label="Cancel"
+                className="cancel-btn"
+                onClick={() => setDeleteShowModal(false)}
+              />
+            </div>
           </div>
-        </div>
-      </Modal>
-    </div>
+        </Modal>
+      </div>
+    </>
   );
 };
 

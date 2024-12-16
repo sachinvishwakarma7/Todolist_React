@@ -4,10 +4,12 @@ import storage from "redux-persist/lib/storage"; // Choose your storage engine
 import { AuthReducer } from "./slices/AuthSlice";
 import { TodoReducer } from "./slices/TodoSlice";
 import { configureStore } from "@reduxjs/toolkit";
+import { MessagesReducer } from "./slices/MessagesSlice";
 
 const rootReducer = combineReducers({
   userReducer: AuthReducer,
   todoReducer: TodoReducer,
+  messagesReducer: MessagesReducer,
 });
 
 const persistConfig = {

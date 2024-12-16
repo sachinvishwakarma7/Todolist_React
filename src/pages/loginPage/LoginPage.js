@@ -16,9 +16,7 @@ function LoginPage() {
   });
 
   const handleSubmit = () => {
-    // e.preventDefault();
-    // alert(`Logging in with ${userData.email}`);
-    dispatch(loginUserThunk({...userData, navigate}));
+    dispatch(loginUserThunk({ ...userData, navigate }));
   };
 
   return (
@@ -33,6 +31,8 @@ function LoginPage() {
           {/* <form onSubmit={handleSubmit}> */}
           <div className="input-wrapper">
             <AppInput
+              type="email"
+              name={"login-email"}
               isIcon={true}
               Icon={<SlEnvolope color="#0d6efd" />}
               placeholder="Email"
@@ -44,6 +44,8 @@ function LoginPage() {
           </div>
           <div className="input-wrapper">
             <AppInput
+              type="password"
+              name={"login-password"}
               isIcon={true}
               Icon={<SlLock color="#0d6efd" />}
               placeholder="Password"

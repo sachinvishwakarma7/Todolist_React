@@ -25,3 +25,22 @@ code {
   border: 0;
   border-radius: 0;
 }
+
+/* Custom Scrollbar */
+
+/* The entire scrollbar */
+::-webkit-scrollbar {
+  width: 2px; /* Width of the scrollbar */
+}
+
+/* The scrollbar track */
+::-webkit-scrollbar-track {
+  background: white; /* Background of the track */
+  border-radius: 2px;
+}
+
+/* The scrollbar thumb (the draggable part) */
+::-webkit-scrollbar-thumb {
+  background: lightgray; /* Color of the thumb */
+  border-radius: 2px;
+}

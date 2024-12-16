@@ -8,23 +8,27 @@ const AppInput = ({
   onChange,
   value,
   placeholder = "Search",
+  name,
 }) => {
   return (
-    <div className="input-container">
-      <input
-        type={type}
-        // style={{ paddingLeft: "34px", borderRadius: "10px" }}
-        className="app-input"
-        placeholder={placeholder}
-        value={value}
-        onChange={onChange}
-      />
-      {isIcon && (
-        <div className="icon-container">
-          {/* <SlMagnifier color="#0d6efd" /> */}
-          {Icon}
-        </div>
-      )}
+    <div>
+      <div className="input-container">
+        <input
+          name={name}
+          type={type}
+          style={{ paddingLeft: !isIcon && "10px" }}
+          className={`app-input`}
+          placeholder={placeholder}
+          value={value}
+          onChange={onChange}
+        />
+        {isIcon && (
+          <div className="icon-container">
+            {/* <SlMagnifier color="#0d6efd" /> */}
+            {Icon}
+          </div>
+        )}
+      </div>
     </div>
   );
 };

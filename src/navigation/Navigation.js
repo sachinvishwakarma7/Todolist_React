@@ -7,18 +7,19 @@ import LoginPage from "../pages/loginPage/LoginPage";
 import ChatPage from "../pages/chatPage/ChatPage";
 import SignupPage from "../pages/signupPage/SignupPage";
 import { useSelector } from "react-redux";
+import Header from "../components/headers/Header";
 
 const Navigation = () => {
-  const { data } = useSelector((state) => state?.userReducer);
+  const { loginData } = useSelector((state) => state?.userReducer);
 
   const PrivateRoute = ({ children }) => {
-    return data?.token ? children : <Navigate to="/login" />;
+    return loginData?.token ? children : <Navigate to="/login" />;
   };
 
   return (
     <BrowserRouter>
       {/* <Header /> */}
-      {data?.token && <Sidebar />}
+      {loginData?.token && <Sidebar />}
       <Routes>
         <Route
           path="/"

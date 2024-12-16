@@ -18,18 +18,18 @@ function SignupPage() {
   });
 
   const signupHandler = () => {
-    if (!userData.username) {
-      notifyError("Please provide username!");
-      return;
-    }
-    if (!userData.email) {
-      notifyError("Please provide email!");
-      return;
-    }
-    if (!userData.password) {
-      notifyError("Please provide password!");
-      return;
-    }
+    // if (!userData.username) {
+    //   notifyError("Please provide username!");
+    //   return;
+    // }
+    // if (!userData.email) {
+    //   notifyError("Please provide email!");
+    //   return;
+    // }
+    // if (!userData.password) {
+    //   notifyError("Please provide password!");
+    //   return;
+    // }
     dispatch(SignupUserThunk({ ...userData, navigate }));
   };
 
@@ -38,7 +38,10 @@ function SignupPage() {
       <div className="background" />
       <div className="login-container">
         <div className="login-box">
-          <div className="login-signup-container">
+          <div
+            style={{ paddingLeft: "10px", paddingBottom: 0, marginBottom: 0 }}
+            className="login-signup-container"
+          >
             <h2>Sign up</h2>
             <span style={{ fontSize: 14 }}>
               Enter your details below to create your account and get started.
@@ -47,7 +50,9 @@ function SignupPage() {
           {/* <form onSubmit={handleSubmit}> */}
           <div className="input-wrapper">
             <AppInput
+              type="text"
               isIcon={true}
+              name={"user-name"}
               Icon={<SlUser color="#0d6efd" />}
               placeholder="username"
               value={userData.username}
@@ -58,6 +63,8 @@ function SignupPage() {
           </div>
           <div className="input-wrapper">
             <AppInput
+              type="email"
+              name={"signup-email"}
               isIcon={true}
               Icon={<SlEnvolope color="#0d6efd" />}
               placeholder="Email"
@@ -69,6 +76,8 @@ function SignupPage() {
           </div>
           <div className="input-wrapper">
             <AppInput
+              type="password"
+              name={"signup-password"}
               isIcon={true}
               Icon={<SlLock color="#0d6efd" />}
               placeholder="Password"
