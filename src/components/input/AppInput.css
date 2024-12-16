@@ -1,0 +1,33 @@
+.input-container {
+  position: relative;
+  display: inline;
+  align-content: center;
+  justify-content: center;
+  background-color: #0d6efd;
+}
+
+.not-icon {
+  padding-left: 10px;
+}
+
+.icon-container {
+  position: absolute;
+  left: 10px;
+  bottom: 0;
+  color: #888;
+  align-self: center;
+  pointer-events: none;
+}
+
+.app-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  padding-left: 32px;
+}
+
+.app-input:focus {
+  border-color: #0d6efd;
+  outline: none;
+}

@@ -1,0 +1,84 @@
+/* Background with animated waves and blur */
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    45deg,
+    #cf8afe,
+    #9a89ff,
+    #89ffdf,
+    #89feff,
+    #fbe28d,
+    transparent
+  );
+  background-size: 300% 300%;
+  animation: gradientAnimation 10s ease infinite;
+  z-index: -1;
+  opacity: 0.5;
+}
+
+/* Animated gradient background */
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Center the login box */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Login box styling */
+.login-box {
+  background: rgba(
+    255,
+    255,
+    255,
+    0.9
+  ); /* Translucent background without blur */
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 300px;
+}
+
+.input-wrapper {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+/* Button styling */
+.btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #0d6efd;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: #0d6efd;
+  color: white;
+}
+
+.login-signup-container {
+  padding-bottom: 20px;
+}
