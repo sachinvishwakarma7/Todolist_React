@@ -15,7 +15,7 @@ import { GetMessagesThunk } from "../../redux/thunk/MessagesThunk";
 import { setSelectedUser } from "../../redux/slices/MessagesSlice";
 import AppInput from "../../components/input/AppInput";
 
-export const socket = io("http://localhost:3005");
+export const socket = io("https://todolist-api-cyan.vercel.app");
 
 const ChatPage = () => {
   const dispatch = useDispatch();
