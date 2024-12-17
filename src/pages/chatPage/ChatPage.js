@@ -17,7 +17,7 @@ import AppInput from "../../components/input/AppInput";
 
 export const socket = io("https://todolist-api-cyan.vercel.app", {
   transports: ["websocket", "polling"], // Use the same transports as on the server
-  withCredentials: true, // Enable credentials if needed
+  withCredentials: false, // Enable credentials if needed
 });
 // export const socket = io("http://localhost:3005");
 
